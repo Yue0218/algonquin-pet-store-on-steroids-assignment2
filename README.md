@@ -1,36 +1,60 @@
-# Algonquin Pet Store (On Steroids)
-Welcome to the Algonquin Pet Store (On Steroids) application.
+## **Project Requirements**  
 
-This sample demo app consists of a group of containerized microservices that can be easily deployed into a Kubernetes cluster. This is meant to show a realistic scenario using a polyglot architecture, event-driven design, and common open source back-end services (eg - RabbitMQ, MongoDB). The application also leverages OpenAI's models to generate product descriptions and images. This can be done using either [Azure OpenAI](https://learn.microsoft.com/azure/ai-services/openai/overview) or [OpenAI](https://openai.com/).
+Your submission must include the following:
 
-This application is inspired by Azure Kubernetes Service (AKS) quickstart demo [Azure Kubernetes Service (AKS) Docs](https://learn.microsoft.com/en-us/azure/aks/).
+### **1. GitHub Repository**
+The GitHub repository must include:  
+1. A `README.md` file containing:  
+   - **Updated Application Architecture**:  
+     - Draw the updated architecture diagram using `Draw.io` and include it in the README.  
+     ![updated_architecture_diagram](./assets/updated_architecture_diagram.png)
+   - **Application and Architecture Explanation**:  
+     - Briefly explain the application functionality and how the architecture works.  
+   - **Deployment Instructions**:  
+     - Step-by-step instructions to deploy the application in a Kubernetes cluster.  
 
-> [!NOTE]
-> This is not meant to be an example of perfect code to be used in production, but more about showing a realistic application running in kubernetes. 
+## Table of Microservice Repositories
+A table listing each microservice repository and its GitHub link.
+| Service              | Repository Link                                   |
+|----------------------|---------------------------------------------------|
+| Store-Front          | [GitHub Link](https://github.com/Yue0218/store-front-Assignment2)          |
+| Store-Admin          | [GitHub Link](https://github.com/Yue0218/store-admin-Assignment2)          |
+| Order-Service        | [GitHub Link](https://github.com/Yue0218/order-service-Assignment2)        |
+| Product-Service      | [GitHub Link](https://github.com/Yue0218/product-service-Assignment2)      |
+| Makeline-Service     | [GitHub Link](https://github.com/Yue0218/makeline-service-Assignment2)     |
+| AI-Service           | [GitHub Link](https://github.com/Yue0218/ai-service-Assignment2)           |
+| MongoDB              | [GitHub Link](https://github.com/docker-library/mongo)                     |
+| Virtual-Customer     | [GitHub Link](https://github.com/Yue0218/virtual-customer-Assignment2)     |
+| Virtual-Worker       | [GitHub Link](https://github.com/Yue0218/virtual-worker-Assignment2)       |
+## Table of Docker Images
+A table listing all Docker images you created, including their names and links to their Docker Hub repositories.
+| Service             | Docker Image Link                                           |
+|----------------------|------------------------------------------------------------|
+| Store-Front          | [Docker Hub Link](https://hub.docker.com/repository/docker/gaoyue218/store-front/tags)          |
+| Store-Admin          | [Docker Hub Link](https://hub.docker.com/repository/docker/gaoyue218/store-admin/tags)          |
+| Order-Service        | [Docker Hub Link](https://hub.docker.com/repository/docker/gaoyue218/order-service/tags)        |
+| Product-Service      | [Docker Hub Link](https://hub.docker.com/repository/docker/gaoyue218/product-service/tags)      |
+| Makeline-Service     | [Docker Hub Link](https://hub.docker.com/repository/docker/gaoyue218/makeline-service/tags)     |
+| AI-Service           | [Docker Hub Link](https://hub.docker.com/repository/docker/gaoyue218/ai-service/tags)           |
+| Virtual-Customer     | [Docker Hub Link](https://hub.docker.com/repository/docker/gaoyue218/virtual-customer/tags)     |
+| Virtual-Worker       | [Docker Hub Link](https://hub.docker.com/repository/docker/gaoyue218/virtual-worker/tags)       |
 
-## Architecture
+    - **Any issues or limitations in the implementation (Optional)**
 
-The application has the following services: 
+2. A **Deployment Files** subfolder:  
+   - Include all Kubernetes deployment YAML files in a folder named `Deployment Files`.  
+   - Ensure these files are clearly named (e.g., `store-front-deployment.yaml`, `order-service-deployment.yaml`).   
 
-| Service | Description | Github Repo |
-| --- | --- | --- |
-| `store-front` | Web app for customers to place orders (Vue.js) | [store-front-L8](https://github.com/ramymohamed10/store-front-L8) |
-| `store-admin` | Web app used by store employees to view orders in queue and manage products (Vue.js) | [store-admin-L8](https://github.com/ramymohamed10/store-admin-L8) |
-| `order-service` | This service is used for placing orders (Javascript) | [order-service-L8](https://github.com/ramymohamed10/order-service-L8) |
-| `product-service` | This service is used to perform CRUD operations on products (Rust) | [product-service-L8](https://github.com/ramymohamed10/product-service-L8) |
-| `makeline-service` | This service handles processing orders from the queue and completing them (Golang) | [makeline-service-L8](https://github.com/ramymohamed10/makeline-service-L8) |
-| `ai-service` | Optional service for adding generative text and graphics creation (Python) | [ai-service-L8](https://github.com/ramymohamed10/ai-service-L8) |
-| `rabbitmq` | RabbitMQ for an order queue | [rabbitmq](https://github.com/docker-library/rabbitmq) |
-| `mongodb` | MongoDB instance for persisted data | [mongodb](https://github.com/docker-library/mongo) |
-| `virtual-customer` | Simulates order creation on a scheduled basis (Rust) | [virtual-customer-L8](https://github.com/ramymohamed10/virtual-customer-L8) |
-| `virtual-worker` | Simulates order completion on a scheduled basis (Rust) | [virtual-worker-L8](https://github.com/ramymohamed10/virtual-worker-L8) |
+### **2. Demo Video**  
+Record a **5-minute max demo video** showcasing the following:  
+- The application in action after deployment to AKS cluster.  
+- AI-generated product descriptions and images.  
+- Integration with the managed order queue service.  
 
+**Upload the video to YouTube** and include a link to the video in your `README.md` file under a "Demo Video" section.  
 
-![Logical Application Architecture Diagram](assets/Algonquin%20Pet%20Store%20On%20Steroids.png)
+---
 
-## Run the app on Azure Kubernetes Service (AKS)
-
-You can use the kubernetes YAML files provided in the [Deployment Files](./Deployment%20Files/) folder to deploy the app to an AKS cluster.
-
-
-
+## **Resources**  
+- **Algonquin Pet Store Repository:** [GitHub Link](https://github.com/ramymohamed10/algonquin-pet-store-on-steroids)  
+---
