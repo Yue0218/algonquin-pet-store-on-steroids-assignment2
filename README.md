@@ -4,11 +4,23 @@
 ![updated_architecture_diagram](./assets/updated_architecture_diagram.png)
 
 ### **2. Application and Architecture Explanation**
+The **Best Buy App** must include the following components:  
 
+| Service              | Description                                                                 |
+|----------------------|-----------------------------------------------------------------------------|
+| **Store-Front**      | Customer-facing app for browsing and placing orders.              |
+| **Store-Admin**      | Employee-facing app for managing products and viewing orders .     |
+| **Order-Service**    | Handles order creation and sends data to the managed order queue via Azure Service Bus.          | 
+| **Product-Service**  | Handles CRUD operations for product data.                          |
+| **Makeline-Service** | Processes and completes orders by reading from the order queue.       |
+| **AI-Service**       | Uses GPT-4 and DALL-E models to generates product descriptions and images.    |
+| **Database**         | MongoDB for persisting order and product data.                            |
+
+---
 ### **3. Deployment Instructions**
 - Step-by-step instructions to deploy the application in a Kubernetes cluster.
 
-### Step 1: Clone the Algonquin Pet Store Repository
+#### Step 1: Clone the Algonquin Pet Store Repository
 
 To begin, clone the [**Algonquin Pet Store (On Steroids)**](https://github.com/ramymohamed10/algonquin-pet-store-on-steroids) repository, which contains all necessary deployment files.
 
@@ -16,7 +28,7 @@ To begin, clone the [**Algonquin Pet Store (On Steroids)**](https://github.com/r
    - Navigate to the `Deployment Files` folder
    - This folder contains YAML files for deploying all necessary Kubernetes resources, including services, deployments, StatefulSets, ConfigMaps, and Secrets.
 
-### Step 2: Set Up the AKS Cluster
+#### Step 2: Set Up the AKS Cluster
 Create an AKS cluster with two worker nodes for this exercise.
 
 
@@ -56,8 +68,4 @@ Record a **5-minute max demo video** showcasing the following:
 
 **Upload the video to YouTube** and include a link to the video in your `README.md` file under a "Demo Video" section.  
 
----
-
-## **Resources**  
-- **Algonquin Pet Store Repository:** [GitHub Link](https://github.com/ramymohamed10/algonquin-pet-store-on-steroids)  
 ---
