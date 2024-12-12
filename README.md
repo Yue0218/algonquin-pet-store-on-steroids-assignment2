@@ -7,7 +7,7 @@ The GitHub repository must include:
 1. A `README.md` file containing:  
    - **Updated Application Architecture**:  
      - Draw the updated architecture diagram using `Draw.io` and include it in the README.  
-     ![updated_architecture_diagram](./updated_architecture_diagram.png)
+     ![updated_architecture_diagram](./assets/updated_architecture_diagram.png)
    - **Application and Architecture Explanation**:  
      - Briefly explain the application functionality and how the architecture works.  
    - **Deployment Instructions**:  
