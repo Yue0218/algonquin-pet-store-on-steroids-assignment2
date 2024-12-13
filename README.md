@@ -59,13 +59,14 @@ A table listing all Docker images you created, including their names and links t
 | Virtual-Customer     | [Virtual-Customer Docker Hub Link](https://hub.docker.com/repository/docker/gaoyue218/virtual-customer-assignment2/general)     |
 | Virtual-Worker       | [Virtual-Worker Docker Hub Link](https://hub.docker.com/repository/docker/gaoyue218/virtual-worker-assignment2/general)       |
 
+---
 
-### **2. Demo Video**  
+### **4. Demo Video**  
 Record a **5-minute max demo video** showcasing the following:  
 - The application in action after deployment to AKS cluster.  
 - AI-generated product descriptions and images.  
 - Integration with the managed order queue service.  
 
-**Upload the video to YouTube** and include a link to the video in your `README.md` file under a "Demo Video" section.  
+- https://youtu.be/pJxgIYE3C9U
 
 ---
