@@ -6,7 +6,7 @@ The goal of this project is to design and develop a cloud-native, microservices-
 
 ---
 ## **2. Application and Architecture Explanation**
-The **Best Buy App** must include the following components:  
+The **Best Buy App** includes the following components:  
 
 | Service              | Description                                                                 |
 |----------------------|-----------------------------------------------------------------------------|
@@ -15,7 +15,7 @@ The **Best Buy App** must include the following components:
 | **Order-Service**    | Handles order creation and sends data to the managed order queue via Azure Service Bus.          | 
 | **Product-Service**  | Handles CRUD operations for product data.                          |
 | **Makeline-Service** | Processes and completes orders by reading from the order queue.       |
-| **AI-Service**       | Uses GPT-4 and DALL-E models to generates product descriptions and images.    |
+| **AI-Service**       | Uses GPT-4 and DALL-E models via Azure OpenAI Services to generates product descriptions and images.    |
 | **Database**         | MongoDB for persisting order and product data.                            |
 
 ---
