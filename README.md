@@ -163,7 +163,8 @@ A table listing all Docker images you created, including their names and links t
 
 ### **Issues or limitations**
 
-I could not figure out how the service bus works, so I did the bonus task of creating CI/CD workflow instead.
+I could not figure out how the service bus works, so I did the bonus task:
+- Set up a Continuous Integration/Continuous Deployment (CI/CD) pipeline for all microservices to automate building, and deploying the application.
 
 ---
 ## **6. Demo Video**  
