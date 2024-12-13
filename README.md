@@ -1,9 +1,10 @@
-## **Project Requirements**  
+# CST-8915 Assignment 2 
 
-### **1. Updated Application Architecture**
+## **1. Updated Application Architecture**
 ![updated_architecture_diagram](./assets/updated_architecture_diagram.png)
 
-### **2. Application and Architecture Explanation**
+---
+## **2. Application and Architecture Explanation**
 The **Best Buy App** must include the following components:  
 
 | Service              | Description                                                                 |
@@ -17,22 +18,124 @@ The **Best Buy App** must include the following components:
 | **Database**         | MongoDB for persisting order and product data.                            |
 
 ---
-### **3. Deployment Instructions**
+## **3. Deployment Instructions**
 - Step-by-step instructions to deploy the application in a Kubernetes cluster.
 
-#### Step 1: Clone the Algonquin Pet Store Repository
+### Step 1: Clone the Best Buy Repository
 
-To begin, clone the [**Algonquin Pet Store (On Steroids)**](https://github.com/ramymohamed10/algonquin-pet-store-on-steroids) repository, which contains all necessary deployment files.
+To begin, clone the [**Best Buy (On Steroids)**](https://github.com/Yue0218/algonquin-pet-store-on-steroids-assignment2) repository, which contains all necessary deployment files.
 
- **Review the Deployment Files**:
-   - Navigate to the `Deployment Files` folder
-   - This folder contains YAML files for deploying all necessary Kubernetes resources, including services, deployments, StatefulSets, ConfigMaps, and Secrets.
-
-#### Step 2: Set Up the AKS Cluster
+### Step 2: Set Up the AKS Cluster
 Create an AKS cluster with two worker nodes for this exercise.
 
+1. **Log in to Azure Portal:**
+   - Go to [https://portal.azure.com](https://portal.azure.com) and log in with your Azure account.
 
-## Table of Microservice Repositories
+2. **Create a Resource Group:**
+   - In the Azure Portal, search for **Resource Groups** in the search bar.
+   - Click **Create** and fill in the following:
+     - **Resource group name**: `AlgonquinPetStoreRG`
+     - **Region**: `Canada`.
+   - Click **Review + Create** and then **Create**.
+
+3. **Create an AKS Cluster:**
+   - In the search bar, type **Kubernetes services** and click on it.
+   - Click **Create** and select **Kubernetes cluster**
+   - In the `Basics` tap fill in the following details:
+     - **Subscription**: Select your subscription.
+     - **Resource group**: Choose `AlgonquinPetStoreRG`.
+     - **Cluster preset configuration**: Choose `Dev/Test`.
+     - **Kubernetes cluster name**: `AlgonquinPetStoreCluster`.
+     - **Region**: Same as your resource group (e.g., `Canada`).
+     - **Availability zones**: `None`.
+     - **AKS pricing tier**: `Free`.
+     - **Kubernetes version**: `Default`.
+     - **Automatic upgrade**: `Disabled`.
+     - **Automatic upgrade scheduler**: `No schedule`.
+     - **Node security channel type**: `None`.
+     - **Security channel scheduler**: `No schedule`.
+     - **Authentication and Authorization**: `Local accounts with Kubernetes RBAC`.
+   - In the `Node pools` tap fill in the following details:
+     - Select **agentpool**. Optionally change its name to `masterpool`. This nodes will have the controlplane.
+        - Set **node size** to `D2as_v4`.
+        - **Scale method**: `Manual`
+        - **Node count**: `1`
+        - Click `update`
+     - Click on **Add node pool**:
+        - **Node pool name**: `workerspool`.
+        - **Mode**: `User` 
+        - Set **node size** to `D2as_v4`.
+        - **Scale method**: `Manual`
+        - **Node count**: `2`
+        - Click `add`
+   - Click **Review + Create**, and then **Create**. The deployment will take a few minutes.
+
+4. **Connect to the AKS Cluster:**
+   - Once the AKS cluster is deployed, navigate to the cluster in the Azure Portal.
+   - In the overview page, click on **Connect**. 
+   - Select **Azure CLI** tap. You will need Azure CLI. If you don't have it: [**Install Azure CLI**](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
+   - Login to your azure account using the following command:
+      ```
+      az login
+      ```
+   - Set the cluster subscription using the command shown in the portal (it will look something like this):
+      ```
+      az account set --subscription 'subscribtion-id'
+      ```
+
+   - Copy the command shown in the portal for configuring `kubectl` (it will look something like this):
+     ```
+     az aks get-credentials --resource-group AlgonquinPetStoreRG --name AlgonquinPetStoreCluster
+     ```
+
+   - Verify Cluster Access:
+      - Test your connection to the AKS cluster by listing all nodes:
+        ```
+        kubectl get nodes
+        ```
+        You should see details of the nodes in your AKS cluster if the connection is successful.
+---
+
+### Step 3: Deploy the Best Buy Application
+
+1. **Apply the YAML file to the AKS cluster:**
+   - In this step, use the K8s deployment YAML files provided in **Deployment Files** folder.
+   - Open the terminal and navigate to the file directory.
+   - Run the following command to apply the YAML configuration and deploy the application to AKS:
+      ```
+      kubectl apply -f order-service-deployment.yaml
+      kubectl apply -f product-service-deployment.yaml
+      kubectl apply -f makeline-service-deployment.yaml
+      kubectl apply -f store-front-deployment.yaml
+      kubectl apply -f store-admin-deployment.yaml
+      kubectl apply -f ai-service-deployment.yaml
+      kubectl apply -f mongodb-deployment.yaml
+      kubectl apply -f rabbitmq-deployment.yaml
+      ```
+
+2. **Verify the deployment:**
+   - After the command executes, verify that the pods are running by using the following command:
+     ```bash
+     kubectl get pods
+     ```
+
+3. **Check services:**
+   - Confirm that all services are up and running:
+     ```bash
+     kubectl get services
+     ```
+
+4. **Access the Store Front Application:**
+   - The **Store Front** service is configured as a LoadBalancer, which exposes the application to the internet.
+   - In the Azure Portal, go to **Kubernetes Services** > **AlgonquinPetStoreCluster** > **Services and ingresses**.
+   - Locate the **store-front** service, and note the **EXTERNAL-IP** address.
+   - Open the store-front application in your browser:
+     ```
+       http://<EXTERNAL-IP>
+     ```
+---
+
+## 4. Table of Microservice Repositories
 A table listing each microservice repository and its GitHub link.
 | Service              | Repository Link                                   |
 |----------------------|---------------------------------------------------|
@@ -42,11 +145,8 @@ A table listing each microservice repository and its GitHub link.
 | Product-Service      | [Product-Service GitHub Link](https://github.com/Yue0218/product-service-Assignment2)      |
 | Makeline-Service     | [Makeline-Service GitHub Link](https://github.com/Yue0218/makeline-service-Assignment2)     |
 | AI-Service           | [AI-Service GitHub Link](https://github.com/Yue0218/ai-service-Assignment2)           |
-| MongoDB              | [MongoDB GitHub Link](https://github.com/docker-library/mongo)                     |
-| Virtual-Customer     | [Virtual-Customer GitHub Link](https://github.com/Yue0218/virtual-customer-Assignment2)     |
-| Virtual-Worker       | [Virtual-Worker GitHub Link](https://github.com/Yue0218/virtual-worker-Assignment2)       |
 
-## Table of Docker Images
+## 5. Table of Docker Images
 A table listing all Docker images you created, including their names and links to their Docker Hub repositories.
 | Service             | Docker Image Link                                           |
 |----------------------|------------------------------------------------------------|
@@ -61,12 +161,16 @@ A table listing all Docker images you created, including their names and links t
 
 ---
 
-### **4. Demo Video**  
-Record a **5-minute max demo video** showcasing the following:  
+### **Issues or limitations**
+
+I could not figure out how the service bus works, so I did the bonus task of creating CI/CD workflow instead.
+
+---
+## **6. Demo Video**  
+A 5-minute max demo video showcasing the following:  
 - The application in action after deployment to AKS cluster.  
 - AI-generated product descriptions and images.  
 - Integration with the managed order queue service.  
 
-- https://youtu.be/pJxgIYE3C9U
-
+**Youtube Link: https://youtu.be/pJxgIYE3C9U**
 ---
