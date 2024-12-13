@@ -1,4 +1,5 @@
 # CST-8915 Assignment 2 
+The goal of this project is to design and develop a cloud-native, microservices-based application for Best Buy, utilizing Kubernetes for deployment and Azure services for order queue management.
 
 ## **1. Updated Application Architecture**
 ![updated_architecture_diagram](./assets/updated_architecture_diagram.png)
@@ -19,7 +20,6 @@ The **Best Buy App** must include the following components:
 
 ---
 ## **3. Deployment Instructions**
-- Step-by-step instructions to deploy the application in a Kubernetes cluster.
 
 ### Step 1: Clone the Best Buy Repository
 
@@ -34,7 +34,7 @@ Create an AKS cluster with two worker nodes for this exercise.
 2. **Create a Resource Group:**
    - In the Azure Portal, search for **Resource Groups** in the search bar.
    - Click **Create** and fill in the following:
-     - **Resource group name**: `AlgonquinPetStoreRG`
+     - **Resource group name**: `Assignment2`
      - **Region**: `Canada`.
    - Click **Review + Create** and then **Create**.
 
@@ -43,9 +43,9 @@ Create an AKS cluster with two worker nodes for this exercise.
    - Click **Create** and select **Kubernetes cluster**
    - In the `Basics` tap fill in the following details:
      - **Subscription**: Select your subscription.
-     - **Resource group**: Choose `AlgonquinPetStoreRG`.
+     - **Resource group**: Choose `Assignment2`.
      - **Cluster preset configuration**: Choose `Dev/Test`.
-     - **Kubernetes cluster name**: `AlgonquinPetStoreCluster`.
+     - **Kubernetes cluster name**: `Assignment2Cluster`.
      - **Region**: Same as your resource group (e.g., `Canada`).
      - **Availability zones**: `None`.
      - **AKS pricing tier**: `Free`.
@@ -85,7 +85,7 @@ Create an AKS cluster with two worker nodes for this exercise.
 
    - Copy the command shown in the portal for configuring `kubectl` (it will look something like this):
      ```
-     az aks get-credentials --resource-group AlgonquinPetStoreRG --name AlgonquinPetStoreCluster
+     az aks get-credentials --resource-group Assignment2 --name Assignment2Cluster
      ```
 
    - Verify Cluster Access:
@@ -94,7 +94,6 @@ Create an AKS cluster with two worker nodes for this exercise.
         kubectl get nodes
         ```
         You should see details of the nodes in your AKS cluster if the connection is successful.
----
 
 ### Step 3: Deploy the Best Buy Application
 
@@ -146,6 +145,7 @@ A table listing each microservice repository and its GitHub link.
 | Makeline-Service     | [Makeline-Service GitHub Link](https://github.com/Yue0218/makeline-service-Assignment2)     |
 | AI-Service           | [AI-Service GitHub Link](https://github.com/Yue0218/ai-service-Assignment2)           |
 
+---
 ## 5. Table of Docker Images
 A table listing all Docker images you created, including their names and links to their Docker Hub repositories.
 | Service             | Docker Image Link                                           |
@@ -173,4 +173,5 @@ A 5-minute max demo video showcasing the following:
 - Integration with the managed order queue service.  
 
 **Youtube Link: https://youtu.be/pJxgIYE3C9U**
+
 ---
